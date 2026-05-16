@@ -1,0 +1,60 @@
+/* Verbex — design system tokens (mirrored from the Claude Design bundle) */
+:root {
+  /* Dark surfaces (primary) */
+  --vx-bg: #0a0a0b;
+  --vx-surface: #141416;
+  --vx-surface-2: #1c1c20;
+  --vx-surface-3: #26262b;
+  --vx-border: #2a2a30;
+  --vx-border-strong: #3a3a42;
+
+  /* Foreground */
+  --vx-fg: #f4f4f6;
+  --vx-fg-muted: #a4a4ad;
+  --vx-fg-dim: #6e6e78;
+
+  /* Accent — Verbex violet */
+  --vx-accent: oklch(0.72 0.17 290);
+  --vx-accent-soft: oklch(0.72 0.17 290 / 0.14);
+  --vx-accent-border: oklch(0.72 0.17 290 / 0.32);
+  --vx-accent-strong: oklch(0.62 0.20 290);
+  --vx-accent-fg: #ffffff;
+
+  /* Semantic */
+  --vx-success: oklch(0.78 0.16 155);
+  --vx-success-soft: oklch(0.78 0.16 155 / 0.14);
+  --vx-warn: oklch(0.78 0.14 70);
+  --vx-warn-soft: oklch(0.78 0.14 70 / 0.14);
+  --vx-danger: oklch(0.70 0.18 25);
+  --vx-danger-soft: oklch(0.70 0.18 25 / 0.14);
+
+  /* Type */
+  --vx-sans: 'Manrope', -apple-system, system-ui, 'Segoe UI', sans-serif;
+  --vx-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Radii */
+  --vx-r-sm: 6px;
+  --vx-r-md: 10px;
+  --vx-r-lg: 14px;
+  --vx-r-xl: 20px;
+
+  /* Shadows */
+  --vx-shadow-menu: 0 1px 0 rgba(255,255,255,0.04) inset,
+                    0 24px 48px -12px rgba(0,0,0,0.7),
+                    0 8px 20px -8px rgba(0,0,0,0.5);
+  --vx-shadow-toast: 0 24px 48px -12px rgba(0,0,0,0.7);
+}
+
+/* Light tokens variant */
+.vx-light {
+  --vx-bg: #fafaf9;
+  --vx-surface: #ffffff;
+  --vx-surface-2: #f3f3f1;
+  --vx-surface-3: #e9e9e6;
+  --vx-border: #e3e3df;
+  --vx-border-strong: #cfcfca;
+  --vx-fg: #0e0e10;
+  --vx-fg-muted: #5a5a62;
+  --vx-fg-dim: #8a8a93;
+  --vx-shadow-menu: 0 24px 48px -12px rgba(0,0,0,0.18), 0 8px 20px -8px rgba(0,0,0,0.10);
+}

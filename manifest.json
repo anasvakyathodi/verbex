@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "Verbex — YouTube Transcript Exporter",
+  "short_name": "Verbex",
+  "description": "A transcript button on every YouTube video. Export in TXT, SRT, or Markdown — no signup, no rate limits, no AI bills.",
+  "version": "1.0.0",
+  "author": "Anas Vakyathodi",
+  "icons": {
+    "16": "src/assets/icons/icon-16.png",
+    "32": "src/assets/icons/icon-32.png",
+    "48": "src/assets/icons/icon-48.png",
+    "128": "src/assets/icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Verbex — Export transcript",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "src/assets/icons/icon-16.png",
+      "32": "src/assets/icons/icon-32.png",
+      "48": "src/assets/icons/icon-48.png",
+      "128": "src/assets/icons/icon-128.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "exclude_matches": ["*://www.youtube.com/shorts/*", "*://music.youtube.com/*"],
+      "js": ["src/content/content.js"],
+      "css": ["src/content/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/content/page-bridge.js",
+        "src/lib/*.js",
+        "src/assets/icons/*"
+      ],
+      "matches": ["*://www.youtube.com/*"]
+    }
+  ],
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+  "permissions": ["activeTab", "downloads", "storage"],
+  "host_permissions": ["*://*.youtube.com/*"],
+  "commands": {
+    "export-transcript": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Export the current YouTube video's transcript"
+    }
+  }
+}

@@ -1,0 +1,260 @@
+/* Verbex toolbar popup — 360px wide, dynamic height. */
+html, body {
+  width: 360px;
+  background: var(--vx-bg);
+  color: var(--vx-fg);
+  overflow: hidden;
+}
+body {
+  font-family: var(--vx-sans);
+}
+
+.popup {
+  width: 360px;
+  min-height: 240px;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--vx-surface);
+  border: 1px solid var(--vx-border);
+  border-radius: 0;
+}
+
+.pop-header {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--vx-border);
+  background: var(--vx-surface);
+}
+.pop-header .t { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+.pop-header .v { font-size: 11px; color: var(--vx-fg-dim); font-family: var(--vx-mono); }
+.pop-header .gear {
+  background: transparent;
+  border: none;
+  color: var(--vx-fg-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+}
+.pop-header .gear:hover { background: var(--vx-surface-2); color: var(--vx-fg); }
+.pop-header .gear:focus-visible { outline: 2px solid var(--vx-accent); outline-offset: 2px; }
+
+/* Current video card */
+.cur-video {
+  padding: 14px;
+  border-bottom: 1px solid var(--vx-border);
+}
+.cur-video .row {
+  display: flex;
+  gap: 10px;
+}
+.cur-video .thumb {
+  width: 92px;
+  height: 52px;
+  border-radius: 6px;
+  flex: 0 0 92px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--vx-surface-2);
+}
+.cur-video .info { flex: 1; min-width: 0; }
+.cur-video .title {
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.cur-video .meta { font-size: 11px; color: var(--vx-fg-dim); margin-top: 3px; }
+.cur-video .actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 12px;
+}
+.cur-video .actions .vx-btn {
+  justify-content: center;
+  height: 34px;
+}
+
+/* Inline format picker, revealed when the Format button is clicked. */
+.format-list {
+  margin-top: 8px;
+  background: var(--vx-surface-2);
+  border: 1px solid var(--vx-border);
+  border-radius: 10px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+}
+.format-list[hidden] { display: none; }
+.fmt-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--vx-fg);
+  border: none;
+  cursor: pointer;
+  font-family: var(--vx-sans);
+  text-align: left;
+  width: 100%;
+}
+.fmt-row:hover { background: var(--vx-surface-3); }
+.fmt-row:focus-visible { outline: 2px solid var(--vx-accent); outline-offset: -2px; }
+.fmt-row .icon {
+  width: 18px; height: 18px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--vx-fg-muted);
+}
+.fmt-row .text { flex: 1; min-width: 0; }
+.fmt-row .text .t { font-size: 12.5px; font-weight: 600; }
+.fmt-row .text .s { font-size: 10.5px; color: var(--vx-fg-dim); margin-top: 1px; }
+
+/* Recent exports list */
+.recent {
+  padding: 12px 8px 8px;
+  overflow-y: auto;
+  flex: 1;
+}
+.recent .head {
+  padding: 4px 10px 8px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vx-fg-dim);
+}
+.recent .row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  color: var(--vx-fg);
+  font-family: var(--vx-sans);
+}
+.recent .row:hover { background: var(--vx-surface-2); }
+.recent .row:focus-visible { outline: 2px solid var(--vx-accent); outline-offset: -2px; }
+.recent .row .ph {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--vx-surface-2);
+  font-size: 8px;
+  flex: 0 0 32px;
+}
+.recent .row .info { flex: 1; min-width: 0; }
+.recent .row .t {
+  font-size: 12.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.recent .row .s { font-size: 10.5px; color: var(--vx-fg-dim); }
+.recent .row .fmt {
+  font-family: var(--vx-mono);
+  font-size: 10px;
+  color: var(--vx-fg-dim);
+}
+.recent .row .chev { color: var(--vx-fg-dim); display: flex; }
+.recent .empty {
+  padding: 28px 16px;
+  text-align: center;
+  color: var(--vx-fg-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Off-video empty state */
+.off {
+  padding: 24px;
+  text-align: center;
+}
+.off .hero {
+  width: 56px;
+  height: 56px;
+  margin: 20px auto 18px;
+  border-radius: 14px;
+  background: var(--vx-accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--vx-accent);
+}
+.off .t { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+.off .s {
+  font-size: 12.5px;
+  color: var(--vx-fg-muted);
+  line-height: 1.55;
+  margin: 8px auto 18px;
+  max-width: 280px;
+}
+.off .vx-btn { width: 100%; justify-content: center; height: 38px; }
+.off .tip {
+  margin-top: 22px;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--vx-surface-2);
+  text-align: left;
+}
+.off .tip .hd {
+  font-size: 11px;
+  color: var(--vx-fg-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+.off .tip .bd {
+  font-size: 12px;
+  color: var(--vx-fg-muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.off .tip .keys {
+  margin-top: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+/* Footer */
+.pop-foot {
+  padding: 10px 14px;
+  border-top: 1px solid var(--vx-border);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11.5px;
+  color: var(--vx-fg-muted);
+  background: var(--vx-surface-2);
+}
+.pop-foot a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.pop-foot a:hover { color: var(--vx-fg); }
+.pop-foot .sep { width: 1px; height: 12px; background: var(--vx-border); }
+.pop-foot .ver {
+  font-family: var(--vx-mono);
+  font-size: 10px;
+  color: var(--vx-fg-dim);
+  margin-left: auto;
+}

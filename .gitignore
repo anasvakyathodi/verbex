@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Playwright artifacts from generating store screenshots
+.playwright-mcp/
+
+# Local Claude state
+.claude/
+
+# Build / zip output
+*.zip
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# Node (in case anyone adds tooling later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
