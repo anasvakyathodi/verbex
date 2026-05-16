@@ -163,5 +163,15 @@ here makes them straightforward to layer on without rewriting v1.0.
 
 ---
 
+## Support
+
+If Verbex saves you time, you can buy me a coffee:
+**[paypal.me/anasvakyathodi](https://paypal.me/anasvakyathodi)**
+
+Not required, not asked for inside the extension — just appreciated.
+
+---
+
 Built by **[Anas Vakyathodi](https://anasvakyathodi.github.io/)** ·
-[GitHub](https://github.com/anasvakyathodi)
+[GitHub](https://github.com/anasvakyathodi) ·
+[PayPal](https://paypal.me/anasvakyathodi)
